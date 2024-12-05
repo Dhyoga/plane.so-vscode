@@ -59,8 +59,7 @@ class PlaneSoTreeDataProvider {
                     projectItem.setChildren(project.issues.map((issue) => {
                         return new PlaneSoItem(issue.name || 'No title', // Nama issue
                         vscode.TreeItemCollapsibleState.None, // Item ini tidak dapat di-expand
-                        issue.issueId, issue.stateName // Sertakan nama state
-                        );
+                        issue.issueId, issue.stateName, issue.assignees);
                     }));
                     items.push(projectItem);
                 });
@@ -82,8 +81,9 @@ class PlaneSoItem extends vscode.TreeItem {
     id; // Menyimpan id yang didapat dari API
     stateName; // Menyimpan nama state
     _children = [];
-    constructor(label, collapsibleState, id, stateName) {
-        super(`${label} - ${stateName || 'No state'}`, collapsibleState); // Tampilkan nama issue dan state
+    constructor(label, collapsibleState, id, stateName, assignee) {
+        const assigneeText = assignee && assignee.length > 0 ? `Assignee: ${assignee.join(', ')}` : 'No Assignee';
+        super(`${label} - ${stateName || 'No state'} - ${assigneeText}`, collapsibleState); // Tampilkan nama issue dan state
         this.id = id;
         this.stateName = stateName;
         this.command = {
