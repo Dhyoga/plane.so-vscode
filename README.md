@@ -1,4 +1,4 @@
-# plane-so README
+# Visual Studio Code Extension for Plane.so
 
 This is the README for your extension "plane-so". After writing up a brief description, we recommend including the following sections.
 
@@ -8,8 +8,8 @@ This is the README for your extension "plane-so". After writing up a brief descr
 2. Visual Studio Code >= v1.95.0
 
 ## How to Run
-1. Open Run and Debug
-2. Select Start Debugging or press F5
+1. Open Run and Debug or press Fn + F5
+2. Select Start Debugging or press Fn + F5
 3. Thank You
 
 ## For more information
