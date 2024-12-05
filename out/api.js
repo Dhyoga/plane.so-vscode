@@ -41,21 +41,6 @@ dotenv.config();
 const API_URL = process.env.API_URL || 'https://api.plane.so/api/v1/workspaces/vml-indonesia/projects/';
 // Ambil API key dari pengaturan ekstensi
 const API_KEY = vscode.workspace.getConfiguration('plane-so').get('apiKey') || '';
-if (!API_KEY) {
-    // Jika belum ada, tampilkan prompt untuk input API key
-    vscode.window.showInputBox({
-        placeHolder: 'Enter your Plane.so API key',
-        password: true // Menyembunyikan input jika diinginkan
-    }).then(apiKey => {
-        if (apiKey) {
-            // Simpan API key ke pengaturan
-            setApiKey(apiKey);
-        }
-        else {
-            vscode.window.showErrorMessage('API Key is required to use the extension.');
-        }
-    });
-}
 async function fetchProjects() {
     try {
         const response = await axios_1.default.get(API_URL, {

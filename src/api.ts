@@ -13,21 +13,6 @@ const API_URL = process.env.API_URL || 'https://api.plane.so/api/v1/workspaces/v
 // Ambil API key dari pengaturan ekstensi
 const API_KEY = vscode.workspace.getConfiguration('plane-so').get<string>('apiKey') || '';
 
-if (!API_KEY) {
-    // Jika belum ada, tampilkan prompt untuk input API key
-    vscode.window.showInputBox({
-        placeHolder: 'Enter your Plane.so API key',
-        password: true // Menyembunyikan input jika diinginkan
-    }).then(apiKey => {
-        if (apiKey) {
-            // Simpan API key ke pengaturan
-            setApiKey(apiKey);
-        } else {
-            vscode.window.showErrorMessage('API Key is required to use the extension.');
-        }
-    });
-}
-
 export async function fetchProjects() {
     try {
         const response = await axios.get(API_URL, {

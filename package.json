@@ -26,7 +26,7 @@
       "type": "object",
       "title": "Plane.so API Settings",
       "properties": {
-        "plane-so.apiKey": {
+        "plane-so.APIKey": {
           "type": "string",
           "default": "",
           "description": "API Key for Plane.so"
