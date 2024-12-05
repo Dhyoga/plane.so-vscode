@@ -44,7 +44,8 @@ export class PlaneSoTreeDataProvider implements vscode.TreeDataProvider<PlaneSoI
                             issue.name || 'No title',  // Nama issue
                             vscode.TreeItemCollapsibleState.None,  // Item ini tidak dapat di-expand
                             issue.issueId,
-                            issue.stateName  // Sertakan nama state
+                            issue.stateName, 
+                            issue.assignees
                         );
                     }));
     
@@ -70,8 +71,9 @@ export class PlaneSoItem extends vscode.TreeItem {
     stateName?: string; // Menyimpan nama state
     private _children: PlaneSoItem[] = [];
 
-    constructor(label: string, collapsibleState: vscode.TreeItemCollapsibleState, id: string, stateName?: string) {
-        super(`${label} - ${stateName || 'No state'}`, collapsibleState); // Tampilkan nama issue dan state
+    constructor(label: string, collapsibleState: vscode.TreeItemCollapsibleState, id: string, stateName?: string, assignee?: []) {
+        const assigneeText = assignee && assignee.length > 0 ? `Assignee: ${assignee.join(', ')}` : 'No Assignee';
+        super(`${label} - ${stateName || 'No state'} - ${assigneeText}`, collapsibleState); // Tampilkan nama issue dan state
         this.id = id;
         this.stateName = stateName;
         this.command = {

@@ -135,10 +135,10 @@ export async function fetchIssues() {
                     return null;
                 }
 
-                const assigneesNames = issue.assignees.map((assigneeId: string) => {
+                const assigneesNames = [...new Set(issue.assignees.map((assigneeId: string) => {
                     const assigneeObj = assignee.find(a => a.id === assigneeId);
                     return assigneeObj ? assigneeObj.name : 'Unknown'; // If no assignee found, return 'Unknown'
-                });
+                }))];
 
                 return {
                     issueId: issue.id,

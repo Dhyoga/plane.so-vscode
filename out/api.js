@@ -146,10 +146,10 @@ async function fetchIssues() {
                 if (issue.stateName === "Done (PM)" || issue.stateName === "Cancelled (PM)") {
                     return null;
                 }
-                const assigneesNames = issue.assignees.map((assigneeId) => {
-                    const assigneeObj = assignee.find(a => a.id === assigneeId);
-                    return assigneeObj ? assigneeObj.name : 'Unknown'; // If no assignee found, return 'Unknown'
-                });
+                const assigneesNames = [...new Set(issue.assignees.map((assigneeId) => {
+                        const assigneeObj = assignee.find(a => a.id === assigneeId);
+                        return assigneeObj ? assigneeObj.name : 'Unknown'; // If no assignee found, return 'Unknown'
+                    }))];
                 return {
                     issueId: issue.id,
                     name: issue.name,
