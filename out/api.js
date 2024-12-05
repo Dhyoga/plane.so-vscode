@@ -112,21 +112,6 @@ async function fetchIssues() {
         const projects = await fetchProjects();
         const states = await fetchStates(projects); // states sudah berisi data proyek dan states mereka
         const allIssues = [];
-        // const assignee = [
-        //     { "id": "aaff94c3-42d5-40d4-a04f-8c52719c5f25", "name": "Ben" },
-        //     { "id": "32539cc1-0c4f-4473-9c63-1160334c2ea7", "name": "Sandi" },
-        //     { "id": "13225328-7e9c-4fae-8663-d2052badb6d7", "name": "Yoga" },
-        //     { "id": "fd6ee278-5a0e-4f03-a677-10c92162317e", "name": "Pugud" },
-        //     { "id": "f12772a4-9800-48f5-a8d7-6a6976668f15", "name": "Gani" },
-        //     { "id": "bf12d906-21f1-4470-812e-7aadf31129a0", "name": "Banu" },
-        //     { "id": "b0745df2-6fe3-4787-987a-a0b9ca2a8fcb", "name": "Hilmy" },
-        //     { "id": "16a99440-cf8a-43b2-baf3-1179d459d4b3", "name": "Rio" },
-        //     { "id": "c229bb0b-c968-4adc-a4c6-d6d4887ca244", "name": "Arief" },
-        //     { "id": "9a5af0f2-97b7-4ea8-8d61-de5c1ca1436b", "name": "Eggy" },
-        //     { "id": "f2035e4e-e70f-412a-8bbf-92b54e8239c3", "name": "Rizky" },
-        //     { "id": "d49b729b-627c-4a17-be1f-fbf5acc3392e", "name": "Yusa" }
-        // ];
-        // const assignee = loadAssignees();
         const assignee = loadAssignees();
         for (const project of projects) {
             const projectId = project.id;
